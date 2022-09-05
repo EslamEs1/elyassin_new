@@ -1,0 +1,68 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Elyassin - Contact Us</title>
+{% endblock %}
+
+{% block base %}
+
+
+    <!-- Start contact us -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="title-main">
+                <h2>Contact Us</h2>
+                <div class="spinner"></div>
+                <p>You can contact us through the following means.</p>
+            </div>
+            <div class="call-box">
+                <div class="box">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div class="text">
+                        <h6>Email</h6>
+                        <a href="mailto:eslamdeveloper1@gmail.com" target="_blank">{{settings.email}}</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <i class="fa-solid fa-phone"></i>
+                    <div class="text">
+                        <h6>Phone</h6>
+                        <a href="tel:+{{settings.phone}}" target="_blank">Phone: +{{settings.phone}}</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                        <i class="fa-solid fa-location-dot"></i> 
+                        <div class="text">
+                        <h6>Address</h6>
+                        <a href="#"> {{settings.address}}</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Start message -->
+    <form class="form-message" method="post">
+        <div class="container">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li style="color:green;">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <br>
+            {{form}}
+            {% csrf_token %}
+            <button type="submit">Send</button>
+        </div>
+    </form>
+
+
+{% endblock %}

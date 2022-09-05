@@ -1,0 +1,48 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Elyassin - Blogs</title>
+{% endblock %}
+
+{% block base %}
+
+
+        <!-- Start blog -->
+        <section class="post">
+            <div class="container">
+                <div class="title-main">
+                    <h2>Our Blogs</h2>
+                    <div class="spinner"></div>
+                    <p>You can follow and read the most important and recent articles.</p>
+                </div>
+                <hr>
+                <div class="list-post">
+                    {% for post in object_list %}
+                    <div class="post-item">
+                        <div class="img">
+                            <a href="{{post.get_absolute_url}}"><img src="{{post.image.url}}" alt="blog img"></a>
+                        </div>
+                        <div class="text">
+                            <h3>{{post.title|truncatewords_html:10}}</h3>
+                            <span><i class="fa-solid fa-user"></i> By Admin / <i class="fa-solid fa-clock"></i> {{post.created_at|timesince}}</span>
+                            <p>{{post.text|safe|truncatewords_html:50}}</p>
+                            <a href="{{post.get_absolute_url}}">Read More</a>
+                        </div>
+                    </div>
+                    {% empty%}
+                    <h1>There are no articles yet. Soon we will start publishing</h1>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+{% endblock %}

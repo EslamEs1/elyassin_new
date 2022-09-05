@@ -1,0 +1,57 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Elyassin - Products</title>
+{% endblock %}
+
+{% block base %}
+
+
+
+
+    <!-- Start Shop -->
+    <div class="shop">
+        <div class="container">
+            <div class="title-main">
+                <h2>Products</h2>
+                <div class="spinner"></div>
+                <p>All our featured products.</p>
+            </div>
+            <div class="filter_form">
+                <form action="" method="get">
+                    <input type="submit" value="filter">
+                    <select  name="q" id="product" name="product">
+                        {% for category in category %}
+                            <option value="{{category}}">{{category}}</option>                      
+                        {% endfor %}
+                    </select>
+                </form>
+            </div>
+            <hr>
+            <div class="title">
+                <h1>All Products</h1>
+            </div>
+            <div class="list_shop">
+
+                {% for pro in object_list %}
+                <div class="info">
+                    <a href="#"><img src="img/products/pic-1.jpg" alt=""></a>
+                    <div class="info_text">
+                        <a href="">ثريا علاقية مفرد مع كرستال مشتت للإضاءة</a>
+                        <span>420 ج</span>
+                        <span><i class="fa-solid fa-location-dot"></i> الاسكندرية </span>
+                    </div>
+                    <div class="cart"><a href=""><i class="fa-solid fa-cart-arrow-down"></i></a></div>
+                </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

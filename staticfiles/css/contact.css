@@ -1,0 +1,90 @@
+
+
+
+
+.contact-section{
+    padding-top: var(--main-padding);
+    padding-bottom: var(--main-padding);
+}
+
+
+.contact-section .call-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.contact-section .call-box .box{
+    border: 2px solid rgb(224, 224, 224);
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin: 10px;
+
+}
+
+.contact-section .call-box .box i{
+    background-color: var(--main-color);
+    color: #fff;
+    padding: 25px;
+    font-size: 20px;
+}
+
+
+.contact-section .call-box .box a{
+    font-size: 13px;
+    color: #777;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.contact-section .call-box .box h6{
+    margin-top: 20px;
+    font-family: font_bold;
+}
+
+
+@media (max-width: 768px) { 
+.contact-section .call-box{
+    flex-direction: column;
+}
+}
+ 
+
+
+.form-message .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.form-message input,
+.form-message textarea{
+    width: 50%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #fff;
+
+}
+
+.form-message button{
+    width: 200px;
+    padding: 10px;
+    background-color: var(--main-color);
+    color: #fff;
+    border: none;
+    font-family: font_bold;
+}
+
+
+
+@media (max-width: 991px) {
+    .form-message input,
+.form-message textarea{
+    width: 100%;
+}
+} 

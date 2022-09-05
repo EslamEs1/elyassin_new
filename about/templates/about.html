@@ -1,0 +1,66 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Elyassin - About Us</title>
+{% endblock %}
+
+{% block base %}
+    <!-- Start More Explanation -->
+    <section class="explanation about">
+        <div class="overlay2"></div>
+        <img src="{% static 'img/constructions/construction-silhouette.jpg' %}" alt="construction" loading="lazy">
+        <div class="container">
+            <div class="text">
+                <h1>About <span>Us</span></h1>
+                <p style="color: #fff; line-height: 1.5em;">{{about.who_are_we}}</p>
+                <div class="accordion" id="accordionExample">
+                    {% for services in services %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse{{services.id}}" aria-expanded="true" aria-controls="collapse{{services.id}}">
+                                {{ services.service_title }}
+                            </button>
+                        </h2>
+                        <div id="collapse{{services.id}}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                {{ services.service_description }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Start our_team -->
+    <div class="our_team">
+        <div class="title-main">
+            <h2>Our Team</h2>
+            <div class="spinner"></div>
+        </div>
+        <div class="container">
+            {% for team in our_team%}
+            <div class="box">
+                <img src="{{team.img.url}}" alt="img">
+                <div class="info">
+                    <h3>{{team.name}}</h3>
+                    <span>{{team.job}}</span>
+                    <span>{{team.phone}}</span>
+                    <span>{{team.email}}</span>
+                    <a href="{{team.facebook}}" target="_blank">FaceBook</a> / 
+                    <a href="{{team.twitter}}" target="_blank">Twitter</a>
+
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}

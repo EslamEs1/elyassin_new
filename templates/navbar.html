@@ -1,0 +1,62 @@
+
+{% load static %}
+
+    <!-- Start First Nav Bar -->
+    <section class="f-nav">
+        <div class="container">
+            <div class="logo">
+                <a href="#"><img src="{% static 'img/logo.png'  %}" alt=""></a>
+            </div>
+
+            <div class="call-us">
+                <div class="box">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div class="text">
+                        <h6>EMAIL</h6>
+                        <a href="mailto:eslamdeveloper1@gmail.com" target="_blank"> eslamdeveloper1@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <div class="text">
+                        <h6>PHONE NUMBER</h6>
+                        <a href="tel:+999999999999" target="_blank"> +999999999999</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Start Main Navbar  -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="{% static 'img/logo.png'  %}" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link {% if '/' == request.path %} active {% endif %}" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if '/about/' == request.path %} active {% endif %}" href="{% url 'about:about' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if '/product/' == request.path %} active {% endif %}" href="{% url 'product:product' %}">Product</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link {% if '/blog/' == request.path %} active {% endif %}" href="{% url 'blog:blog' %}">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if '/contact/' == request.path %} active {% endif %}" href="{% url 'home:contact' %}">Contact Us</a>
+                    </li>
+                    <div id="google_translate_element"></div>
+                </ul>
+            </div>
+        </div>
+    </nav>

@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Elyassin - Post</title>
+{% endblock %}
+
+{% block base %}
+
+     <!-- Start Detail Blog -->
+    <section class="detail-blog">
+        <div class="container">
+            <h1>{{object}}</h1>
+            <img src="{{object.image.url}}" alt="Image blog">
+            <div class="info">
+                <span><i class="fa-solid fa-user"></i> By Admin / <i class="fa-solid fa-clock"></i> {{object.created_at|timesince}}</span>
+                <p>{{object.text|safe}}</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+{% endblock %}

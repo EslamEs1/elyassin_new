@@ -1,0 +1,160 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Elyassin - Home</title>
+{% endblock %}
+
+{% block base %}
+
+    <!-- Start landing page -->
+    <section class="landing">
+        <div class="overlay"></div>
+        <img src="{% static 'img/landing/landing.jpg' %}" alt="landing">
+        <div class="text">
+            <h1><span>WE ARE</span> ELYASSIN</h1>
+            <p>{{about.who_are_we|truncatewords_html:20 }}</p>
+            <a href="{% url 'about:about' %}">Read More</a>
+        </div>
+    </section>
+
+    <!-- Start About Company -->
+    <section class="about-comp">
+        <div class="container">
+            <div class="title-main">
+                <h2>ABOUT COMPANY</h2>
+                <div class="spinner"></div>
+                <p>Here are all the services that we provide and that we have a lot of experience in.</p>
+            </div>
+            <div class="item">
+                <div class="box">
+                    <img src="{% static 'img/about_company/about-pic4.jpg' %}" alt="ABOUT COMPANY" loading="lazy">
+                </div>
+                <div class="box-info">
+                    <div class="one-item">
+                        {% for service in services %}
+                        <a href="{% url 'about:about' %}">
+                            <div class="info">
+                                <img src="{{service.img.url}}" alt="Home" loading="lazy">
+                                <h3>{{service.service_title}}</h3>
+                                <p>{{service.service_description|truncatewords_html:13}}</p>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Start More Explanation -->
+    <section class="explanation">
+        <div class="overlay2"></div>
+        <img src="{% static 'img/constructions/construction-silhouette.jpg' %}" alt="construction" loading="lazy">
+        <div class="container">
+            <div class="text">
+                <h1>Our <span>Services</span></h1>
+                <div class="accordion" id="accordionExample">
+                    {% for services in services %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse{{services.id}}" aria-expanded="true" aria-controls="collapse{{services.id}}">
+                                {{ services.service_title }}
+                            </button>
+                        </h2>
+                        <div id="collapse{{services.id}}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                {{ services.service_description|truncatewords_html:30 }}
+                                <a style="color:#cc7a00;" href="{% url 'about:about' %}">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+
+
+    </section>
+
+    <!-- Start OUR SERVICES  -->
+    <section class="services">
+        <div class="container">
+            <div class="title-main">
+                <h2>Some Projects Photo</h2>
+                <div class="spinner"></div>
+                <p>Some pictures from our previous and ongoing projects.</p>
+            </div>
+
+            <!-- MAIN (Center website) -->
+            <div class="main">
+                <div id="myBtnContainer">
+                    <button class="btn active" onclick="filterSelection('all')">All</button>/
+                    {% for services in services %}
+                    <button class="btn" onclick="filterSelection('{{services.service_title}}')">{{services.service_title}}</button>/
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    {% for img in img_services %}
+                    <div class="column {{img.service.service_title}}">
+                        <div class="content">
+                            <img src="{{img.service_img.url}}" alt="{{img.service.service_title}}">
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- END MAIN -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Start Blogs  -->
+    <section class="blogs">
+        <div class="container">
+            <div class="title-main">
+                <h2>Our Blogs</h2>
+                <div class="spinner"></div>
+                <p>You can follow and read the most important and recent articles.</p>
+            </div>
+            <div class="one-list">
+
+                {% for post in post|slice:':1' %}
+                <div class="big-item">
+                    <div class="overlay"></div>
+                    <a href="{{post.get_absolute_url}}"><img src="{{post.image.url}}" alt="img blog"></a>
+                    <div class="text">
+                        <a href="{{post.get_absolute_url}}">{{post|truncatewords_html:12}}</a>
+                        <span><i class="fa-solid fa-user"></i> By Admin / <i class="fa-solid fa-clock"></i> {{post.created_at|timesince}}</span>
+                        <p>{{post.text|safe|truncatewords_html:10}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="tow-list">
+                    {% for post in post|slice:'1:' %}
+                    <div class="smull-item">
+                        <a href="#"><img src="{% static 'img/blog/pic1.jpg' %}" alt="img blog"></a>
+                        <div class="text">
+                            <a href="#">Expert & Professional</a>
+                            <span><i class="fa-solid fa-user"></i> By Admin / <i class="fa-solid fa-comments"></i> 2
+                                comment / <i class="fa-solid fa-clock"></i> 5</span>
+
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
