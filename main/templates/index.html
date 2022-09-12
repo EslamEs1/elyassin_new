@@ -140,9 +140,9 @@
                 <div class="tow-list">
                     {% for post in post|slice:'1:' %}
                     <div class="smull-item">
-                        <a href="#"><img src="{% static 'img/blog/pic1.jpg' %}" alt="img blog"></a>
+                        <a href="{{post.get_absolute_url}}"><img src="{% static 'img/blog/pic1.jpg' %}" alt="img blog"></a>
                         <div class="text">
-                            <a href="#">Expert & Professional</a>
+                            <a href="{{post.get_absolute_url}}">Expert & Professional</a>
                             <span><i class="fa-solid fa-user"></i> By Admin / <i class="fa-solid fa-comments"></i> 2
                                 comment / <i class="fa-solid fa-clock"></i> 5</span>
 

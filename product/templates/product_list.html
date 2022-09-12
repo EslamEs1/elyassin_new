@@ -34,17 +34,18 @@
                 <h1>All Products</h1>
             </div>
             <div class="list_shop">
-
                 {% for pro in object_list %}
                 <div class="info">
-                    <a href="#"><img src="img/products/pic-1.jpg" alt=""></a>
+                    <a href="{{pro.get_absolute_url}}"><img src="{{pro.img.url}}" alt=""></a>
                     <div class="info_text">
-                        <a href="">ثريا علاقية مفرد مع كرستال مشتت للإضاءة</a>
-                        <span>420 ج</span>
+                        <a href="{{pro.get_absolute_url}}">{{pro}}</a>
+                        <span>{{pro.price}} ج</span>
                         <span><i class="fa-solid fa-location-dot"></i> الاسكندرية </span>
                     </div>
                     <div class="cart"><a href=""><i class="fa-solid fa-cart-arrow-down"></i></a></div>
                 </div>
+                {% empty %}
+                <span>There Are No Products Yet. Soon We Will Start Publishing</span>
                 {% endfor %}
 
 

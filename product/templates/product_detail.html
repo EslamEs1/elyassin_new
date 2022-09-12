@@ -1,0 +1,72 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Elyassin - Product</title>
+{% endblock %}
+
+{% block base %}
+
+
+<section class="details">
+        <div class="container">
+            <div class="list-detail">
+                <div class="box">
+                    <img src="{{object.img.url}}" alt="product">
+                </div>
+                <div class="box">
+                    <h1>TITLE OF ITEM IMAGE</h1>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae delectus quas deserunt optio perspiciatis et totam reprehenderit dolore quo, eius numquam ipsa, quos maiores itaque iure dolorum quis, voluptatem eveniet!</p>
+                    <table>
+                        <tr>
+                            <td>Price</td>
+                            <td>{{object.price}}$</td>
+                        </tr>
+                        <tr>
+                            <td>Category</td>
+                            <td>{{object.category}}</td>
+                        </tr>
+                        <tr>
+                            <td>Stock Availability</td>
+                            <td>{{object.available}}</td>
+                        </tr>
+                        <tr>
+                            <td>Color</td>
+                            <td>{{object.color}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Start Shop -->
+    <div class="shop">
+        <div class="container">
+            <div class="title">
+                <h1>Related Products</h1>
+                <hr>
+                <br>
+            </div>
+            <div class="list_shop">
+                {% for pro in Products %}
+                <div class="info">
+                    <a href="{{pro.get_absolute_url}}"><img src="{{pro.img.url}}" alt=""></a>
+                    <div class="info_text">
+                        <a href="{{pro.get_absolute_url}}">{{pro}}</a>
+                        <span>{{pro.price}} ج</span>
+                        <span><i class="fa-solid fa-location-dot"></i> الاسكندرية </span>
+                    </div>
+                    <div class="cart"><a href=""><i class="fa-solid fa-cart-arrow-down"></i></a></div>
+                </div>
+                {% empty %}
+                <span>There Are No Products Yet. Soon We Will Start Publishing</span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

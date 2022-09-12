@@ -2,22 +2,22 @@
     <section class="Footer">
         <div class="container">
             <div class="box">
-                <a href="#"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+                <a href="#"><img src="{{links.logo}}" alt="logo"></a>
                 <p>All rights reserved to Elyassin</p>
             </div>
             <div class="box">
                 <div class="socail-media">
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="{{links.facebook}}"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="{{links.twitter}}"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="{{links.instagram}}"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="{{links.whatsapp}}"><i class="fa-brands fa-whatsapp"></i></a>
                 </div>
             </div>
             <div class="box">
                 <div class="contact">
-                    <p><i class="fa-solid fa-map-marker-alt"></i> 123 Street, New York, USA</p>
-                    <p><i class="fa-solid fa-phone"></i> +012 345 6789</p>
-                    <p><i class="fa-solid fa-envelope"></i> eslamdeveloper1@gmail.com</p>
+                    <p><i class="fa-solid fa-map-marker-alt"></i> {{links.address}}</p>
+                    <p><i class="fa-solid fa-phone"></i> +{{links.phone}}</p>
+                    <p><i class="fa-solid fa-envelope"></i> {{links.email}}</p>
                     <a href="https://www.facebook.com/EslamEss11"><img style="width: 30px; height: 30px;" src="{% static 'img/LOGO PNG 2.png' %}" alt="logo dev"> / Made By Eslam Essam</a>
                 </div>
         </div>

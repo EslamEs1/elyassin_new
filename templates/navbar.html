@@ -5,7 +5,7 @@
     <section class="f-nav">
         <div class="container">
             <div class="logo">
-                <a href="#"><img src="{% static 'img/logo.png'  %}" alt=""></a>
+                <a href="/"><img src="{{links.logo}}" alt="logo"></a>
             </div>
 
             <div class="call-us">
@@ -13,7 +13,7 @@
                     <i class="fa-solid fa-envelope"></i>
                     <div class="text">
                         <h6>EMAIL</h6>
-                        <a href="mailto:eslamdeveloper1@gmail.com" target="_blank"> eslamdeveloper1@gmail.com</a>
+                        <a href="mailto:{{links.email}}" target="_blank"> {{links.email}}</a>
                     </div>
                 </div>
 
@@ -21,7 +21,7 @@
                     <i class="fa-solid fa-mobile-screen-button"></i>
                     <div class="text">
                         <h6>PHONE NUMBER</h6>
-                        <a href="tel:+999999999999" target="_blank"> +999999999999</a>
+                        <a href="tel:+{{links.phone}}" target="_blank"> +{{links.phone}}</a>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
     <!-- Start Main Navbar  -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="{% static 'img/logo.png'  %}" alt="Logo"></a>
+            <a class="navbar-brand" href="/"><img src="{{links.logo}}" alt="Logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

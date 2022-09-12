@@ -9,13 +9,15 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+from django.contrib.messages import constants as messages
 import json
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-with open(BASE_DIR / 'project_settings.json') as config_file:
+with open(BASE_DIR / 'local.json') as config_file:
     config = json.load(config_file)
 
 # Quick-start development settings - unsuitable for production
@@ -75,6 +77,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.global_view',
+
             ],
         },
     },
@@ -118,7 +122,15 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+LANGUAGES = (
+    ('en-us', _('English')),
+    ('ar', _('Arabic')),
+)
+
+LOCALE_PATHS = (BASE_DIR / 'locale',)
+
+TIME_ZONE = 'Africa/Cairo'
+
 
 USE_I18N = True
 
@@ -131,8 +143,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'staticfiles']
-STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 MEDIA_URL = 'media/'
@@ -150,3 +162,78 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Messages tags
+MESSAGE_TAGS = {
+    messages.DEBUG: 'blue',
+    messages.INFO: 'blue',
+    messages.SUCCESS: 'green',
+    messages.WARNING: 'orange',
+    messages.ERROR: 'red',
+}
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+# Crispy settings
+# CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+# CRISPY_TEMPLATE_PACK = "bootstrap5"
+# CRISPY_FAIL_SILENTLY = not DEBUG
+
+
+# Django security
+# CORS_REPLACE_HTTPS_REFERER = bool(config['CORS_REPLACE_HTTPS_REFERER'])
+# HOST_SCHEME = config['HOST_SCHEME']
+# SECURE_SSL_REDIRECT = bool(config['SECURE_SSL_REDIRECT'])
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SESSION_COOKIE_SECURE = bool(config['SESSION_COOKIE_SECURE'])
+# CSRF_COOKIE_SECURE = bool(config['CSRF_COOKIE_SECURE'])
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = bool(config['SECURE_HSTS_INCLUDE_SUBDOMAINS'])
+# SECURE_HSTS_PRELOAD = bool(config['SECURE_HSTS_PRELOAD'])
+# SECURE_HSTS_SECONDS = 15768000
+# SECURE_BROWSER_XSS_FILTER = True
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Elyassin",
+    "site_header": "Elyassin",
+    "site_brand": "Elyassin",
+
+    # "site_logo": "/static/img/logo.png",
+    # "login_logo": "static/img/logo.png",
+    # "login_logo_dark": None,
+    # "site_logo_classes": "img-circle",
+    # "site_icon": None,
+    "welcome_sign": "Welcome to Elyassin Panel",
+    "copyright": "Eslam Es",
+
+    "user_avatar": None,
+    ############
+    # Top Menu #
+    ############
+    # Links to put along the top menu
+    "topmenu_links": [
+
+        # Url that gets reversed (Permissions can be added)
+        {"name": "Home",  "url": "/",
+            "permissions": ["auth.view_user"]},
+        # model admin to link to (Permissions checked against model)
+        {"model": "auth.User"},
+        {"model": "auth.Group", "permissions": ["auth.view_user"]},
+    ],
+
+    #############
+    # Side Menu #
+    #############
+    # Whether to display the side menu
+    "show_sidebar": True,
+
+    # Whether to aut expand the menu
+    "navigation_expanded": False,
+
+    # Hide these apps when generating side menu e.g (auth)
+    "hide_apps": ['auth', 'django_summernote'],
+    "custom_css": None,
+
+}
