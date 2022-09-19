@@ -32,7 +32,7 @@ DEBUG = bool(config['DEBUG'])
 if DEBUG:
     ALLOWED_HOSTS = []
 else:
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = ['192.241.150.80', '.elyassin.com']
 
 
 # Application definition
@@ -89,13 +89,24 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'elyassindb',
+            'USER': 'eslames',
+            'PASSWORD': 'Sda49fs4zs4',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 
 
 # Password validation
@@ -182,17 +193,17 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 
 # Django security
-# CORS_REPLACE_HTTPS_REFERER = bool(config['CORS_REPLACE_HTTPS_REFERER'])
-# HOST_SCHEME = config['HOST_SCHEME']
-# SECURE_SSL_REDIRECT = bool(config['SECURE_SSL_REDIRECT'])
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# SESSION_COOKIE_SECURE = bool(config['SESSION_COOKIE_SECURE'])
-# CSRF_COOKIE_SECURE = bool(config['CSRF_COOKIE_SECURE'])
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = bool(config['SECURE_HSTS_INCLUDE_SUBDOMAINS'])
-# SECURE_HSTS_PRELOAD = bool(config['SECURE_HSTS_PRELOAD'])
-# SECURE_HSTS_SECONDS = 15768000
-# SECURE_BROWSER_XSS_FILTER = True
-# SECURE_CONTENT_TYPE_NOSNIFF = True
+CORS_REPLACE_HTTPS_REFERER = bool(config['CORS_REPLACE_HTTPS_REFERER'])
+HOST_SCHEME = config['HOST_SCHEME']
+SECURE_SSL_REDIRECT = bool(config['SECURE_SSL_REDIRECT'])
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = bool(config['SESSION_COOKIE_SECURE'])
+CSRF_COOKIE_SECURE = bool(config['CSRF_COOKIE_SECURE'])
+SECURE_HSTS_INCLUDE_SUBDOMAINS = bool(config['SECURE_HSTS_INCLUDE_SUBDOMAINS'])
+SECURE_HSTS_PRELOAD = bool(config['SECURE_HSTS_PRELOAD'])
+SECURE_HSTS_SECONDS = 15768000
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
 
 
 JAZZMIN_SETTINGS = {
