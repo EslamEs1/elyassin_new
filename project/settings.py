@@ -187,9 +187,9 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 # CRISPY_FAIL_SILENTLY = not DEBUG
 
 # Security
-# CSRF_COOKIE_SECURE = True
-# SESSION_COOKIE_SECURE = True
-# SECURE_SSL_REDIRECT = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
 
 JAZZMIN_SETTINGS = {
     "site_title": "Elyassin",
