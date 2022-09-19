@@ -193,7 +193,7 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 
 # Django security
-CORS_REPLACE_HTTPS_REFERER = bool(config['CORS_REPLACE_HTTPS_REFERER'])
+#CORS_REPLACE_HTTPS_REFERER = bool(config['CORS_REPLACE_HTTPS_REFERER'])
 HOST_SCHEME = config['HOST_SCHEME']
 SECURE_SSL_REDIRECT = bool(config['SECURE_SSL_REDIRECT'])
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
