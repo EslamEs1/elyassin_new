@@ -12,12 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from django.contrib.messages import constants as messages
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
-
+from .debug import DEBUG as deb
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-with open(BASE_DIR / 'debug.py') as config_file:
-    config = py.load(config_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -26,7 +23,7 @@ with open(BASE_DIR / 'debug.py') as config_file:
 SECRET_KEY = 'django-insecure-#hb=(9^uxkr5kk^n%o*7qg16q&grdb4@k@nt!bk+)&c#b&aj^x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(config['DEBUG'])
+DEBUG = deb
 
 if DEBUG:
     ALLOWED_HOSTS = []
