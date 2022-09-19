@@ -28,7 +28,7 @@ DEBUG = deb
 if DEBUG:
     ALLOWED_HOSTS = []
 else:
-    ALLOWED_HOSTS = ['192.241.150.80', '.elyassin.com']
+    ALLOWED_HOSTS = ['206.189.238.17', '.elyassin.com']
 
 
 # Application definition
@@ -129,12 +129,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-LANGUAGES = (
-    ('en-us', _('English')),
-    ('ar', _('Arabic')),
-)
+# LANGUAGES = (
+#     ('en-us', _('English')),
+#     ('ar', _('Arabic')),
+# )
 
-LOCALE_PATHS = (BASE_DIR / 'locale',)
+# LOCALE_PATHS = (BASE_DIR / 'locale',)
 
 TIME_ZONE = 'Africa/Cairo'
 
@@ -158,11 +158,11 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
-# SUMMERNOTE_CONFIG = {
-#         # Change editor size
-#         'width': '100%',
-#         'height': '400',
-#     }
+SUMMERNOTE_CONFIG = {
+        # Change editor size
+        'width': '100%',
+        'height': '400',
+    }
 
 
 # Default primary key field type
@@ -188,9 +188,9 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 # CRISPY_FAIL_SILENTLY = not DEBUG
 
 # Security
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True
 
 JAZZMIN_SETTINGS = {
     "site_title": "Elyassin",
