@@ -12,10 +12,13 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from django.contrib.messages import constants as messages
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
-from .debug import DEBUG as debug
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+with open(BASE_DIR / 'debug.py') as config_file:
+    config = py.load(config_file)
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -23,8 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#hb=(9^uxkr5kk^n%o*7qg16q&grdb4@k@nt!bk+)&c#b&aj^x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = bool(config['DEBUG'])
 
-if DEBUG == debug:
+if DEBUG:
     ALLOWED_HOSTS = []
 else:
     ALLOWED_HOSTS = ['192.241.150.80', '.elyassin.com']
@@ -84,7 +88,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-if DEBUG == debug:
+if DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -186,7 +190,10 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 # CRISPY_TEMPLATE_PACK = "bootstrap5"
 # CRISPY_FAIL_SILENTLY = not DEBUG
 
-
+# Security
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
 
 JAZZMIN_SETTINGS = {
     "site_title": "Elyassin",
