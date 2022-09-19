@@ -87,3 +87,4 @@ __pycache__/
 db.sqlite3
 /media
 project_settings.json
+local.json

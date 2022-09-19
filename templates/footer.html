@@ -2,15 +2,24 @@
     <section class="Footer">
         <div class="container">
             <div class="box">
-                <a href="#"><img src="{{links.logo}}" alt="logo"></a>
+                <a href="#"><img src="{{links.logo.url}}" alt="logo"></a>
                 <p>All rights reserved to Elyassin</p>
             </div>
             <div class="box">
                 <div class="socail-media">
+                    {% if links.facebook %}
                     <a href="{{links.facebook}}"><i class="fa-brands fa-facebook-f"></i></a>
+                    {% endif %}
+                    {% if links.twitter %}
                     <a href="{{links.twitter}}"><i class="fa-brands fa-twitter"></i></a>
+                    {% endif %}
+                    {% if links.instagram %}
                     <a href="{{links.instagram}}"><i class="fa-brands fa-instagram"></i></a>
+                    {% endif %}
+                    {% if links.whatsapp %}
                     <a href="{{links.whatsapp}}"><i class="fa-brands fa-whatsapp"></i></a>
+                    {% endif %}
+
                 </div>
             </div>
             <div class="box">
