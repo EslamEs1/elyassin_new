@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 from django.contrib.messages import constants as messages
 from pathlib import Path
-from django.utils.translation import gettext_lazy as _
 from .debug import DEBUG as deb
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +27,7 @@ DEBUG = deb
 if DEBUG:
     ALLOWED_HOSTS = []
 else:
-    ALLOWED_HOSTS = ['206.189.238.17', '.elyassin.com']
+    ALLOWED_HOSTS = ['159.223.136.52', '.elyassin.com']
 
 
 # Application definition
@@ -96,7 +95,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'elyassindb',
+            'NAME': 'yassindb',
             'USER': 'eslames',
             'PASSWORD': 'Sda49fs4zs4',
             'HOST': 'localhost',
@@ -159,10 +158,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 
 SUMMERNOTE_CONFIG = {
-        # Change editor size
-        'width': '100%',
-        'height': '400',
-    }
+    # Change editor size
+    'width': '100%',
+    'height': '400',
+}
 
 
 # Default primary key field type
