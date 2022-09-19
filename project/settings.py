@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-#hb=(9^uxkr5kk^n%o*7qg16q&grdb4@k@nt!bk+)&c#b&aj^x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(config['DEBUG'])
 
-if DEBUG = True:
+if DEBUG == True:
     ALLOWED_HOSTS = []
 else:
     ALLOWED_HOSTS = ['192.241.150.80', '.elyassin.com']
