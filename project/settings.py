@@ -27,7 +27,7 @@ DEBUG = deb
 if DEBUG:
     ALLOWED_HOSTS = []
 else:
-    ALLOWED_HOSTS = ['www.elyassin.com','elyassin.com']
+    ALLOWED_HOSTS = ['.elyassin.com']
 
 
 # Application definition
